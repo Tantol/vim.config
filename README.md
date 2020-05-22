@@ -1,6 +1,13 @@
-# Vim configuration
-
 ## Author: Piotr 'Tantol' Żarczyński
+
+### Vim configuration for:
+- PHP
+- HTML
+- CSS
+- JS
+- C#
+With coc.nvim plugin you can customize this configuration for any supported language.
+Just change or add extensions suited for you: `let g:coc_global_extensions = [...]`
 
 ### Requirements:
 - vim >= 8.0
