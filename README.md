@@ -15,6 +15,6 @@
 - Done
 
 
-If you have any question fill free to ask. If I missed somthing from requirements him me too :)
+If you have any question feel free to ask. If I missed somthing from requirements him me too :)
 ### Cheers
 
