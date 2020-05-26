@@ -56,6 +56,7 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 
 Plug 'sheerun/vim-polyglot'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 call plug#end()
 
@@ -103,6 +104,8 @@ nmap <silent> gr <Plug>(coc-references)
 " Re map C-d to C-j, C-u to C-k
 nnoremap <C-j> <C-d>
 nnoremap <C-k> <C-u>
+xnoremap <C-j> <C-d>
+xnoremap <C-k> <C-u>
 
 " Navigation in insert mode
 inoremap <C-h> <Left>
