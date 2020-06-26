@@ -2,8 +2,8 @@ syntax on
 
 set hidden
 set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 set number relativenumber
@@ -47,9 +47,7 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'tpope/vim-fugitive'
 Plug 'mbbill/undotree'
 Plug 'stephpy/vim-php-cs-fixer'
-Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'tomasiser/vim-code-dark'
@@ -57,6 +55,8 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'posva/vim-vue'
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
@@ -69,17 +69,14 @@ endif
 
 let mapleader = " "
 
-let NERDTreeShowHidden=1
-
-let g:coc_global_extensions = ['coc-prettier', 'coc-css', 'coc-json', 'coc-phpls', 'coc-omnisharp', 'coc-html', 'coc-snippets', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-prettier', 'coc-css', 'coc-json', 'coc-phpls', 'coc-omnisharp', 'coc-html', 'coc-snippets', 'coc-vetur', 'coc-tsserver', 'coc-eslint', 'coc-explorer']
 
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 
 let g:ctrlp_use_caching = 0
-
-let g:NERDSpaceDelims = 3 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 let g:php_cs_fixer_path = "~/php-cs-fixer-v2.phar" " define the path to the php-cs-fixer.phar
 let g:php_cs_fixer_php_path = "/usr/bin/php7.3"               " Path to PHP
@@ -100,6 +97,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nmap <space>E :CocCommand explorer<CR>
 
 " Re map C-d to C-j, C-u to C-k
 nnoremap <C-j> <C-d>
@@ -272,7 +271,10 @@ nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :wri
 nnoremap  <silent> <leader><tab> :bn\|bd #<CR>
 nnoremap  <silent> <leader><s-tab> :bp\|bd #<CR>
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Eslint :CocCommand eslint.executeAutofix
+
 " autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
-autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
+autocmd BufNewFile,BufRead *.vue set filetype=html
