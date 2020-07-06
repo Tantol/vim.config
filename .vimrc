@@ -57,6 +57,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'posva/vim-vue'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -69,7 +71,7 @@ endif
 
 let mapleader = " "
 
-let g:coc_global_extensions = ['coc-prettier', 'coc-css', 'coc-json', 'coc-phpls', 'coc-omnisharp', 'coc-html', 'coc-snippets', 'coc-vetur', 'coc-tsserver', 'coc-eslint', 'coc-explorer']
+let g:coc_global_extensions = ['coc-prettier', 'coc-css', 'coc-json', 'coc-phpls', 'coc-omnisharp', 'coc-html', 'coc-snippets', 'coc-vetur', 'coc-tsserver', 'coc-eslint', 'coc-explorer', 'coc-pairs']
 
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
