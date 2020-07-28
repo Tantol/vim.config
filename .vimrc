@@ -6,7 +6,7 @@ set tabstop=2 softtabstop=2
 set shiftwidth=2
 set expandtab
 set smartindent
-set number relativenumber
+set relativenumber
 set nowrap
 set smartcase
 set noswapfile
@@ -31,14 +31,7 @@ set colorcolumn=80
 
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+set signcolumn=yes
 
 call plug#begin('~/.vim/plugged')
 
@@ -59,6 +52,11 @@ Plug 'posva/vim-vue'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
+Plug 'heavenshell/vim-jsdoc', { 
+  \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+  \ 'do': 'make install'
+\}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -86,6 +84,11 @@ let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by defaul
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
 
+let g:go_debug_windows = {
+      \ 'vars':       'rightbelow 60vnew',
+      \ 'stack':      'rightbelow 10new',
+\ }
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -95,10 +98,13 @@ nnoremap <leader>u :UndotreeShow<CR>
 
 nnoremap <Leader>ps :Rg<SPACE>
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
+
+" Go language
+autocmd FileType go nmap <silent> <leader>gd :GoDef<CR>
 
 nmap <space>E :CocCommand explorer<CR>
 
