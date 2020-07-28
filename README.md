@@ -6,6 +6,7 @@
 - CSS
 - JS (Vue)
 - C#
+- GO
 
 With coc.nvim plugin you can customize this configuration for any supported language.
 Just change or add extensions suited for you: `let g:coc_global_extensions = [...]`
