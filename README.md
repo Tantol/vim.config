@@ -4,7 +4,7 @@
 - PHP
 - HTML
 - CSS
-- JS
+- JS (Vue)
 - C#
 
 With coc.nvim plugin you can customize this configuration for any supported language.
