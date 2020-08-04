@@ -1,5 +1,4 @@
 syntax on
-
 set hidden
 set noerrorbells
 set tabstop=2 softtabstop=2
@@ -29,45 +28,47 @@ set shortmess+=c
 
 set colorcolumn=80
 
-highlight ColorColumn ctermbg=0 guibg=lightgrey
-
 set signcolumn=yes
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
-Plug 'jremmen/vim-ripgrep'
-Plug 'tpope/vim-fugitive'
-Plug 'mbbill/undotree'
-Plug 'stephpy/vim-php-cs-fixer'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdcommenter'
-Plug 'tomasiser/vim-code-dark'
-Plug 'vim-airline/vim-airline'
-
-Plug 'sheerun/vim-polyglot'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
-Plug 'posva/vim-vue'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-ragtag'
-Plug 'tpope/vim-surround'
-Plug 'heavenshell/vim-jsdoc', { 
-  \ 'for': ['javascript', 'javascript.jsx','typescript'], 
-  \ 'do': 'make install'
-\}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'tpope/vim-fugitive'
+  Plug 'mbbill/undotree'
+  Plug 'stephpy/vim-php-cs-fixer'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'preservim/nerdcommenter'
+  Plug 'tomasiser/vim-code-dark'
+  Plug 'vim-airline/vim-airline'
+  
+  Plug 'sheerun/vim-polyglot'
+  Plug 'posva/vim-vue'
+  Plug 'tpope/vim-sleuth'
+  Plug 'tpope/vim-ragtag'
+  Plug 'tpope/vim-surround'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
+set t_Co=256
+set t_ut=
 colorscheme codedark
 set background=dark
+
+hi clear LineNr
+hi Normal guibg=NONE ctermbg=NONE
+hi EndOfBuffer ctermbg=None
+
+let g:airline_theme = 'codedark'
 
 if executable('rg')
     let g:rg_derive_root='true'
 endif
 
 let mapleader = " "
+
+let g:NERDSpaceDelims = 1
 
 let g:coc_global_extensions = ['coc-prettier', 'coc-css', 'coc-json', 'coc-phpls', 'coc-omnisharp', 'coc-html', 'coc-snippets', 'coc-vetur', 'coc-tsserver', 'coc-eslint', 'coc-explorer', 'coc-pairs']
 
@@ -89,6 +90,9 @@ let g:go_debug_windows = {
       \ 'stack':      'rightbelow 10new',
 \ }
 
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
+
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -97,6 +101,8 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
 nnoremap <Leader>ps :Rg<SPACE>
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-p> :GFiles<CR>
 
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
