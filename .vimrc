@@ -1,8 +1,8 @@
 syntax on
 set hidden
 set noerrorbells
-set tabstop=2 softtabstop=2
-set shiftwidth=2
+set tabstop=4 softtabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
 set relativenumber
@@ -27,8 +27,6 @@ set updatetime=300
 set shortmess+=c
 
 set colorcolumn=80
-
-set signcolumn=yes
 
 call plug#begin('~/.vim/plugged')
 
@@ -70,7 +68,7 @@ let mapleader = " "
 
 let g:NERDSpaceDelims = 1
 
-let g:coc_global_extensions = ['coc-prettier', 'coc-css', 'coc-json', 'coc-phpls', 'coc-omnisharp', 'coc-html', 'coc-snippets', 'coc-vetur', 'coc-tsserver', 'coc-eslint', 'coc-explorer', 'coc-pairs']
+let g:coc_global_extensions = ['coc-prettier', 'coc-css', 'coc-json', 'coc-phpls', 'coc-omnisharp', 'coc-html', 'coc-snippets', 'coc-vetur', 'coc-tsserver', 'coc-eslint', 'coc-explorer']
 
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
